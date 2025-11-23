@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const triggerText = document.querySelector('.interactive-text');
+    const cards = document.querySelectorAll('.glass-card');
+    
+    triggerText.addEventListener('mouseenter', function() {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                // 重置动画
+                card.style.animation = 'none';
+                void card.offsetWidth; // 触发重绘
+                // 应用新动画
+                card.style.animation = 'cardBounce 0.6s ease';
+            }, index * 100);
+        });
+    });
+});
+</script>
+
+<link rel="stylesheet" href="style_of_index.css">
+
+</head>
+<body>
+<div class="starry-background"></div>
+<div class="welcome-section">
+  <h1 class="welcome-title">Hi,我是咕咕，欢迎来到我的个人网站</h1>
+  <p class="welcome-subtitle">或许你我只是在现实中有过一次小小的邂逅，但是如果你愿意，可以通过<b class="interactive-text">这些方面</b>来了解到更真实的我</p>
+
+<div class="cards-container">
+    <div class="glass-card">
+        <h3>关于我</h3>
+        <a href="about_myself.html" style="text-decoration: none;">
+        <p>点击这里您将看见我的个人信息、背景和经历...🎯</p>
+    </a>
+    </div>
+
+    <div class="glass-card">
+        <h3>我的技能</h3>
+        <a href="my_skill.html" style="text-decoration: none;">
+        <p>我到底会什么东西呢？🤔真是个好问题！快点开看看</p>
+        </a>
+    </div>
+    <div class="glass-card">
+        <h3>我的思考</h3>
+        <a href="My_thoughts.html" style="text-decoration: none;">
+            <p>我靠这个好吃懒做的人到底会想什么呢？💡</p>
+        </a>
+        
+    </div>
+</div>
+</div>
+</body>
+</html>
