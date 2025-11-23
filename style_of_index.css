@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 创建一个全屏的背景层 */
 .starry-background {
     position: fixed;
@@ -234,3 +235,241 @@
     50% { transform: translateY(0); }
     75% { transform: translateY(-8px); }
 }
+=======
+/* 创建一个全屏的背景层 */
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -9999;
+    pointer-events: none;
+    
+    /* 蓝粉渐变背景 */
+    background: linear-gradient(135deg, 
+        #667eea 0%,     /* 蓝色 */
+        #764ba2 25%,    /* 紫蓝色 */
+        #f093fb 50%,    /* 粉色 */
+        #f5576c 75%,    /* 玫红色 */
+        #667eea 100%    /* 回到蓝色 */
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.starry-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* 白色星星 */
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(0.5px 0.5px at 90px 40px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 120px 80px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(0.5px 0.5px at 60px 120px, rgba(255, 255, 255, 0.6), transparent),
+        
+        /* 粉色星星 */
+        radial-gradient(1.5px 1.5px at 150px 50px, rgba(255, 182, 193, 0.9), transparent),
+        radial-gradient(1px 1px at 180px 90px, rgba(255, 105, 180, 0.8), transparent),
+        
+        /* 蓝色星星 */
+        radial-gradient(1.5px 1.5px at 30px 150px, rgba(135, 206, 250, 0.9), transparent),
+        radial-gradient(1px 1px at 80px 180px, rgba(173, 216, 230, 0.8), transparent),
+        radial-gradient(0.8px 0.8px at 200px 100px, rgba(176, 224, 230, 0.7), transparent),
+
+        radial-gradient(1px 1px at 220px 130px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(0.7px 0.7px at 240px 170px, rgba(255, 182, 193, 0.7), transparent),
+        radial-gradient(1px 1px at 260px 110px, rgba(135, 206, 250, 0.6), transparent);
+
+
+
+    background-size: 250px 250px;
+    animation: float 30s infinite linear;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    100% {
+        transform: translate(30px, 30px);
+    }
+}
+
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 20px;
+    min-height: 400px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 300px;
+    min-height: 200px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 磨砂玻璃效果增强 */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* 悬停效果 */
+.glass-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 卡片内容样式 */
+.glass-card h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .cards-container{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .glass-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+    }
+    
+    .glass-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 100px 20px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 主标题 */
+.welcome-title {
+    color: white;
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+/* 副标题 */
+.welcome-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* 交互文字 */
+.interactive-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.3rem;
+    margin-bottom: 60px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+.interactive-text:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+
+/* 卡片跳动动画 */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.interactive-text:hover ~ .cards-container .glass-card:nth-child(1) {
+    animation: cardBounce 0.6s ease 0.1s;
+}
+
+.interactive-text:hover ~ .cards-container .glass-card:nth-child(2) {
+    animation: cardBounce 0.6s ease 0.2s;
+}
+
+.interactive-text:hover ~ .cards-container .glass-card:nth-child(3) {
+    animation: cardBounce 0.6s ease 0.3s;
+}
+
+
+@keyframes cardBounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-15px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-8px); }
+}
+>>>>>>> ca65834ea97f913a829726749ab7f9403534518e

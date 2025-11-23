@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -991,3 +992,525 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的思考空间</title>
+    <link rel="stylesheet" href="css_of_myself.css">
+    <style>
+        /* 朋友圈特有样式*/
+        .thoughts-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .post-form {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .post-input {
+            width: 100%;
+            min-height: 100px;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+            font-family: 'Microsoft YaHei', sans-serif;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .post-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .post-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .post-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .posts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .post {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .username {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .post-time {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .post-content {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .post-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+        
+        .like-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .like-button:hover {
+            background: #f8f9fa;
+            color: #e74c3c;
+        }
+        
+        .like-button.liked {
+            color: #e74c3c;
+        }
+        
+        .like-count {
+            font-size: 14px;
+        }
+        
+        .comment-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .comment-button:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+        
+        .comments-section {
+            margin-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+        
+        .comment {
+            display: flex;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .comment-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 10px;
+        }
+        
+        .comment-content{
+            flex: 1;
+        }
+        
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /*yixiaweixingjia*/
+        /* 应用星空渐变背景 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft YaHei', sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* 星空背景层 */
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -9999;
+    pointer-events: none;
+    
+    /* 蓝粉渐变背景 */
+    background: linear-gradient(135deg, 
+        #667eea 0%,     /* 蓝色 */
+        #764ba2 25%,    /* 紫蓝色 */
+        #f093fb 50%,    /* 粉色 */
+        #f5576c 75%,    /* 玫红色 */
+        #667eea 100%    /* 回到蓝色 */
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.starry-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* 白色星星 */
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(0.5px 0.5px at 90px 40px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 120px 80px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(0.5px 0.5px at 60px 120px, rgba(255, 255, 255, 0.6), transparent),
+        
+        /* 粉色星星 */
+        radial-gradient(1.5px 1.5px at 150px 50px, rgba(255, 182, 193, 0.9), transparent),
+        radial-gradient(1px 1px at 180px 90px, rgba(255, 105, 180, 0.8), transparent),
+        
+        /* 蓝色星星 */
+        radial-gradient(1.5px 1.5px at 30px 150px, rgba(135, 206, 250, 0.9), transparent),
+        radial-gradient(1px 1px at 80px 180px, rgba(173, 216, 230, 0.8), transparent),
+        radial-gradient(0.8px 0.8px at 200px 100px, rgba(176, 224, 230, 0.7), transparent),
+
+        radial-gradient(1px 1px at 220px 130px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(0.7px 0.7px at 240px 170px, rgba(255, 182, 193, 0.7), transparent),
+        radial-gradient(1px 1px at 260px 110px, rgba(135, 206, 250, 0.6), transparent);
+    background-size: 250px 250px;
+    animation: float 30s infinite linear;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%;}
+}
+
+@keyframes float {
+    100% {
+        transform: translate(30px, 30px);
+    }
+}
+
+/* 修改思考页面容器样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    font-size: 3em;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1.2em;
+    color: rgba(255,255,255,0.9);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 修改帖子样式为磨砂玻璃效果 */
+.post-form, .post {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1)
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.post-form:hover, .post:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 修改文本颜色为白色系 */
+.post-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.post-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.post-input:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+    outline: none;
+}
+
+.username, .post-content {
+    color: white;
+}
+
+.post-time {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 修改按钮样式 */
+.post-button {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.post-button:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+}
+
+/* 修改返回按钮 */
+.back-button {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+}
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="starry-background"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>💭 我的思考空间</h1>
+            <p>记录想法，分享感悟，与访客交流互动</p>
+        </div>
+        
+        <div class="thoughts-container">
+            <!-- 发布新思考 -->
+            <div class="post-form">
+                <textarea class="post-input" placeholder="分享您的想法..."></textarea>
+                <button class="post-button">发布思考</button>
+            </div>
+            
+            <!-- 思考列表 -->
+            <div class="posts-container">
+                <!-- 示例思考1 
+                <div class="post">
+                    <div class="post-header">
+                        <div class="avatar">我</div>
+                        <div class="user-info">
+                            <div class="username">开发者</div>
+                            <div class="post-time">2025年11月6日 11:30</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        今天在学习React Hooks时，发现useEffect的依赖数组真是个巧妙的设计。它让我重新思考了函数式编程的优雅之处。
+                    </div>
+                    <div class="post-actions">
+                        <button class="like-button">
+                            <span>❤️</span>
+                            <span class="like-count">12</span>
+                        </button>
+                        <button class="comment-button">
+                            <span>💬</span>
+                            <span>评论</span>
+                        </button>
+                    </div>
+                </div>
+                -->
+                
+                <!-- 示例思考2 
+                <div class="post">
+                    <div class="post-header">
+                        <div class="avatar">我</div>
+                        <div class="user-info">
+                            <div class="username">开发者</div>
+                            <div class="post-time">2025年11月5日 15:20</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        完成第一个个人网站的感觉真好！从零开始搭建，每一行代码都充满了成就感。接下来要学习后端开发了，期待能做出更完整的项目。
+                    </div>
+                    <div class="post-actions">
+                        <button class="like-button liked">
+                            <span>❤️</span>
+                            <span class="like-count">25</span>
+                        </button>
+                        <button class="comment-button">
+                            <span>💬</span>
+                            <span>评论</span>
+                        </button>
+                    </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+        
+        <div class="back-link">
+            <a href="http://127.0.0.1:5500/HTML/index.html" class="back-button">← 返回主页</a>
+        </div>
+    </div>
+
+    <script>
+        // 点赞功能
+        document.querySelectorAll('.like-button').forEach(button =>{
+            button.addEventListener('click', function(){
+                const likeCount = this.querySelector('.like-count');
+                let count = parseInt(likeCount.textContent);
+                
+                if (this.classList.contains('liked')) {
+                    count--;
+                    this.classList.remove('liked');
+                } else{
+                    count++;
+                    this.classList.add('liked');
+                }
+                
+                likeCount.textContent = count;
+            });
+        });
+        
+        // 发布新思考功能
+        document.querySelector('.post-button').addEventListener('click', function() {
+            const input = document.querySelector('.post-input');
+            const content = input.value.trim();
+            
+            if (content) {
+                const now = new Date();
+                const timeString = now.toLocaleString('zh-CN');
+                
+                const newPost = document.createElement('div');
+                newPost.className = 'post';
+                newPost.innerHTML = `
+                    <div class="post-header">
+                        <div class="avatar">我</div>
+                        <div class="user-info">
+                            <div class="username">开发者</div>
+                            <div class="post-time">${timeString}</div>
+                        </div
+                    </div>
+                    <div class="post-content">${content}</div>
+                    <div class="post-actions">
+                        <button class="like-button">
+                            <span>❤️</span>
+                            <span class="like-count">0</span>
+                        </button>
+                        <button class="comment-button">
+                            <span>💬</span
+                            <span>评论</span>
+                        </button>
+                    </div>
+                `;
+                
+                document.querySelector('.posts-container').insertBefore(newPost, document.querySelector('.posts-container').firstChild);
+                input.value = '';
+                
+                // 为新帖子添加点赞事件
+                newPost.querySelector('.like-button').addEventListener('click', function() {
+                    const likeCount = this.querySelector('.like-count');
+                    let count = parseInt(likeCount.textContent);
+                    
+                    if (this.classList.contains('liked')) {
+                        count--;
+                        this.classList.remove('liked');
+                    } else {
+                        count++;
+                        this.classList.add('liked');
+                    }
+                    
+                    likeCount.textContent = count;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+>>>>>>> ca65834ea97f913a829726749ab7f9403534518e
